@@ -1,0 +1,11 @@
+.ToggleButton{
+   border:1px solid #fff;
+   padding:2px;
+   cursor: pointer;    
+}
+.ToggleButton div{
+    background-color:#fff;
+    width:20px;
+    height:1.5px;
+    margin:4px 2px;
+}

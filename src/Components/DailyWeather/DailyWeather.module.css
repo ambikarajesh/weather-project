@@ -1,0 +1,10 @@
+.DailyWeather{
+    list-style: none;
+    border-bottom:1px solid #ccc;
+}
+.DailyWeather li{
+    padding:10px 0;
+}
+.DailyWeather span{
+    width:100px;
+}

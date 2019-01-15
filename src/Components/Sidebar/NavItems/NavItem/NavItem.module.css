@@ -1,0 +1,20 @@
+.NavItem{
+    width:100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #aaa;
+    float:left;
+    font-size: 12px;
+    display:flex;
+    justify-content: space-between;    
+}
+.NavItem a{
+    text-decoration: none;
+}
+
+.Time{
+    font-size:8px;
+    text-align: left;
+}
+.City{
+    font-weight: bold;
+}

@@ -1,0 +1,11 @@
+.ShortWeather{
+    width:100%;
+    box-sizing: border-box;
+}
+.Time{
+    font-size:8px;
+    text-align: left;
+}
+.City{
+    font-weight: bold;
+}
