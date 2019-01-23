@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
-import NavItems from '../../Components/Sidebar/NavItems/NavItems';
+import CityList from '../../Components/Sidebar/CityList/CityList';
 class CurrentCity extends React.Component{
     componentDidUpdate(prevProps, prevState){
         if(!prevProps.currentCity||(prevProps.currentCity.latitude!==this.props.currentCity.latitude && prevProps.currentCity.longitude!==this.props.currentCity.longitude)){
@@ -9,7 +9,7 @@ class CurrentCity extends React.Component{
         }
     }
     render(){
-        const current  = this.props.city ? <NavItems cities = {this.props.city} show = {false}  clickCity = {this.props.clickCity}/> :null;
+        const current  = this.props.city ? <CityList cities = {this.props.city} show = {false}  clickCity = {this.props.clickCity}/> :null;
         return(
             <div> 
                {current}

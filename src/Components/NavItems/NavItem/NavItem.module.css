@@ -1,9 +1,0 @@
-.NavItem{
-    text-decoration: none;
-    color:#fff;
-    padding:10px;
-}
-
-.NavItem a:hover, .NavItem a:active, .NavItem a.active{
-    color:red;
-}

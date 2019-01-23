@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
-import NavItems from '../../Components/Sidebar/NavItems/NavItems';
+import CityList from '../../Components/Sidebar/CityList/CityList';
 
 class MoreCities extends React.Component{
     componentDidUpdate(nextProps, nextState){
@@ -11,7 +11,7 @@ class MoreCities extends React.Component{
     }
    
     render(){
-       const morecities  = this.props.cities.length>=0? <NavItems cities = {this.props.cities} clickDeleteButton = {this.props.clickDeleteButton}  clickCity = {this.props.clickCity} show/> :null;
+       const morecities  = this.props.cities.length>=0? <CityList cities = {this.props.cities} clickDeleteButton = {this.props.clickDeleteButton}  clickCity = {this.props.clickCity} show/> :null;
         return(
             <div> 
                {morecities}
