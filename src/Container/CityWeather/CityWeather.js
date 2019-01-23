@@ -3,7 +3,7 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import HourlyWeather from '../../Components/HourlyWeahter/HourlyWeather';
 import DailyWeather from '../../Components/DailyWeather/DailyWeather';
-
+import Spinner from '../../Components/UI/Spinner/Spinner';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
 import classes from './CityWeather.module.css';
@@ -20,7 +20,6 @@ class CityWeather extends React.Component{
     }
 
     render(){
-        
        let header = null;
        let footer = null;
        let hourly = null;
@@ -36,6 +35,7 @@ class CityWeather extends React.Component{
         
         return (
             <div className = {classes.CityWeather}>
+            {this.props.loading? <Spinner/>: null}
                 {header}                
                 {hourly}
                 {daily}
@@ -47,6 +47,7 @@ class CityWeather extends React.Component{
 const mapStateToProps = state => {
     return {
         displayCity:state.LayoutReducer.displayCity,
+        loading:state.CityWeatherReducer.loading,
         header:state.CityWeatherReducer.header,
         footer:state.CityWeatherReducer.footer,
         hourly:state.CityWeatherReducer.hourly,

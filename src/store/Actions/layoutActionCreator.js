@@ -1,5 +1,5 @@
 import * as actionTypes from '../actionTypes';
-import axios from 'axios';
+import axios from '../../axios-cities';
 export const fetchCurrentCityStart = () => {
     return {
         type:actionTypes.FETCH_CURRENTCITY_START
@@ -60,7 +60,7 @@ export const fetchCities = () => {
         const token = getState().SignUporInReducer.token;
         const userId = getState().SignUporInReducer.userId;  
         dispatch(fetchCitiesStart());        
-        axios.get('https://weather-project-224801.firebaseio.com/citylist.json', {
+        axios.get('citylist.json', {
             params: {
                 auth: token,
                 orderBy: '"userId"',
@@ -107,7 +107,7 @@ export const addCity = (newCity) => {
     return (dispatch, getState)=>{
         const token = getState().SignUporInReducer.token;        
         dispatch(addCityStart());
-        axios.post('https://weather-project-224801.firebaseio.com/citylist.json?auth='+token, newCity).then(response =>{
+        axios.post('citylist.json?auth='+token, newCity).then(response =>{
             dispatch(addCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{
@@ -138,7 +138,7 @@ export const deleteCity = (delCity) => {
     return (dispatch, getState)=>{
         const token = getState().SignUporInReducer.token;
         dispatch(deleteCityStart());
-        axios.delete('https://weather-project-224801.firebaseio.com/citylist/'+delCity.id+'.json?auth='+token).then(response =>{
+        axios.delete('citylist/'+delCity.id+'.json?auth='+token).then(response =>{
            dispatch(deleteCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{
