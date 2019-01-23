@@ -6,6 +6,7 @@ import PlacesAutocomplete, {
 import './SearchLocation.css';
 import Button from '../../Components/Button/Button';
 import classes from './SearchLocation.module.css';
+import {connect} from 'react-redux';
 class SearchLocation extends React.Component {
       state = { 
           address: '',
@@ -76,7 +77,7 @@ class SearchLocation extends React.Component {
                                 >
                                               {render}
                                 </PlacesAutocomplete>
-                                <Button name ='ADD' clicked = {() => this.props.clickAddCityButton({latitude:this.state.latitude.toFixed(2), longitude:this.state.longitude.toFixed(2)})} disable = {this.state.disableAddButton} show custom = {false}/>
+                                <Button name ='ADD' clicked = {() => this.props.clickAddCityButton({latitude:this.state.latitude.toFixed(2), longitude:this.state.longitude.toFixed(2), userId:this.props.userId})} disable = {this.state.disableAddButton} show custom = {false}/>
                                 <Button name ='CANCEL'  clicked = {this.props.clickCancelButton} disable = {false} show custom = {false}/>
 
                           </div>
@@ -84,5 +85,10 @@ class SearchLocation extends React.Component {
             );
       }
 }
+const mapStatetoProps = state => {
+      return{
+            userId:state.SignUporInReducer.userId
+      }
+}
 
-export default SearchLocation;
+export default connect(mapStatetoProps)(SearchLocation);

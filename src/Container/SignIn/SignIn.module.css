@@ -1,0 +1,11 @@
+.SignIn{
+    background-color: #aaa;
+    padding:20px;
+}
+.SignInForm{
+    margin:0 auto;
+    width:40%;
+    padding:20px;
+    border:2px solid #ccc;
+    background-color: #aaa;
+}

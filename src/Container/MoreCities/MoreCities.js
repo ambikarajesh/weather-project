@@ -23,7 +23,7 @@ class MoreCities extends React.Component{
 const mapStateToProps = state => {
     return {
         cityList:state.LayoutReducer.cityList,
-        cities:state.MoreCitiesReducer.cities,
+        cities:state.MoreCitiesReducer.cities
     }
 }
 

@@ -1,11 +1,8 @@
 import React from 'react';
 import Toolbar from '../../Components/Toolbar/Toolbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
-import {Route} from 'react-router-dom';
-import CityWeather from '../CityWeather/CityWeather';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
-import Spinner from '../../Components/UI/Spinner/Spinner';
 class Layout extends React.Component {
     state = {
         
@@ -14,17 +11,19 @@ class Layout extends React.Component {
     }       
    
     componentDidMount(){
-        this.props.fetchCurrentCityHandler();  
-        this.props.fetchCitiesHandler();       
-    }   
+        this.props.fetchCurrentCityHandler(); 
+    }  
+    componentDidUpdate(prevProps, prevState){
+        if(!prevProps.token && this.props.token){              
+                this.props.fetchCitiesHandler();      
+        }
+    } 
     
 
     render(){
-        let City = this.props.loading ? <Spinner/> : this.props.error ? <p>{this.props.error}</p> : this.props.currentCity ? <Route path = '/' component = {() => <CityWeather city = {this.props.displayCity}/>}/> : null;
-        
         return(
             <React.Fragment>
-                <Toolbar clickToggleButton = {this.props.toggleButtonHandler}/>
+                <Toolbar clickToggleButton = {this.props.toggleButtonHandler} isAuthenticated = {this.props.isAuthenticated}/>
                 <Sidebar    error = {this.props.error}
                             loading = {this.props.loading}
                             showSidebar = {this.props.showSidebar} 
@@ -37,7 +36,7 @@ class Layout extends React.Component {
                 
 
                 <main>
-                   {City}
+                {this.props.children}
                 </main>
             </React.Fragment>
         )
@@ -52,7 +51,9 @@ const mapStateToProps = state => {
         displayCity:state.LayoutReducer.displayCity,
         showAddCity:state.LayoutReducer.showAddCity,
         showSidebar:state.LayoutReducer.showSidebar,
-        loading:state.LayoutReducer.loading
+        loading:state.LayoutReducer.loading,
+        isAuthenticated :state.SignUporInReducer.token !== null,
+        token:state.SignUporInReducer.token
     }
 }
 

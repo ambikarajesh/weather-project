@@ -9,6 +9,7 @@ import layoutReducer from './store/Reducers/layoutReducer';
 import currentCityReducer from './store/Reducers/currentCityReducer';
 import moreCitiesReducer from './store/Reducers/moreCitiesReducer';
 import cityWeatherReducer from './store/Reducers/cityWeatherReducer';
+import signUporInReducer from './store/Reducers/signInReducer';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     CurrentCityReducer: currentCityReducer,
     MoreCitiesReducer:moreCitiesReducer,
     CityWeatherReducer:cityWeatherReducer,
+    SignUporInReducer:signUporInReducer
 })
 const logger = ()=>{
     return next =>{

@@ -109,6 +109,11 @@ const layoutReducer = (state = initialState,action) => {
                 ...state,
                 showAddCity:false
             }
+        case actionTypes.CLEAR_CITIES:
+        return{
+            ...state,
+            cityList :[]
+        } 
             
         default:
             return state

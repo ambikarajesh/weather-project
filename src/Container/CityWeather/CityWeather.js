@@ -6,9 +6,17 @@ import DailyWeather from '../../Components/DailyWeather/DailyWeather';
 
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
+import classes from './CityWeather.module.css';
 class CityWeather extends React.Component{
-    componentDidMount(){        
-            this.props.fetchCityWeatherHandler(this.props.city)
+    componentDidMount(){
+        if(this.props.displayCity){
+            this.props.fetchCityWeatherHandler(this.props.displayCity)
+        }
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(!prevProps.displayCity||(prevProps.displayCity.latitude!==this.props.displayCity.latitude && prevProps.displayCity.longitude!==this.props.displayCity.longitude)){
+            this.props.fetchCityWeatherHandler(this.props.displayCity)
+        }
     }
 
     render(){
@@ -27,7 +35,7 @@ class CityWeather extends React.Component{
         }
         
         return (
-            <div>
+            <div className = {classes.CityWeather}>
                 {header}                
                 {hourly}
                 {daily}

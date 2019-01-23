@@ -21,3 +21,9 @@ export {
 export {
     fetchCityWeather
 } from './cityWeatherActionCreator';
+
+export {
+    signUporIn,
+    logout,
+    retainState
+} from './signInActionCreator';

@@ -56,9 +56,16 @@ export const fetchCitiesFail = () => {
 }
 
 export const fetchCities = () => {
-    return dispatch =>{
-        dispatch(fetchCitiesStart());
-        axios.get('https://weather-project-224802.firebaseio.com/citylist.json').then(res =>{
+    return (dispatch, getState)=>{
+        const token = getState().SignUporInReducer.token;
+        const userId = getState().SignUporInReducer.userId;  
+        dispatch(fetchCitiesStart());        
+        axios.get('https://weather-project-224801.firebaseio.com/citylist.json', {
+            params: {
+                auth: token,
+                orderBy: '"userId"',
+                equalTo: `"${userId}"`,
+            }}).then(res =>{
             const cities = [];
             for (let key in res.data){
                 cities.push({...res.data[key], id:key});
@@ -97,9 +104,10 @@ export const addCityFail = () => {
 }
 
 export const addCity = (newCity) => {
-    return dispatch =>{        
+    return (dispatch, getState)=>{
+        const token = getState().SignUporInReducer.token;        
         dispatch(addCityStart());
-        axios.post('https://weather-project-224802.firebaseio.com/citylist.json', newCity).then(response =>{
+        axios.post('https://weather-project-224801.firebaseio.com/citylist.json?auth='+token, newCity).then(response =>{
             dispatch(addCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{
@@ -127,9 +135,10 @@ export const deleteCityFail = () => {
 }
 
 export const deleteCity = (delCity) => {
-    return dispatch =>{
+    return (dispatch, getState)=>{
+        const token = getState().SignUporInReducer.token;
         dispatch(deleteCityStart());
-        axios.delete('https://weather-project-224802.firebaseio.com/citylist/'+delCity.id+'.json').then(response =>{
+        axios.delete('https://weather-project-224801.firebaseio.com/citylist/'+delCity.id+'.json?auth='+token).then(response =>{
            dispatch(deleteCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{

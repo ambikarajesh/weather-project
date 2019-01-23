@@ -1,0 +1,8 @@
+.InputBox{
+    padding:5px;
+    margin:10px auto;
+    width:60%;
+    font-family: inherit;
+    border:1px solid #ddd;
+    border-radius: 2px 2px;
+}
