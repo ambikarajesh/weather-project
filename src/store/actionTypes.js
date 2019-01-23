@@ -41,3 +41,5 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_CITIES = 'CLEAR_CITIES';
+
+export const OPEN_SIGNIN = 'OPEN_SIGNIN';

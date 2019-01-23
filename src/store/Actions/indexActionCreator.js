@@ -5,7 +5,7 @@ export {
     addCity,
     deleteCity,
     selectCity,    
-    addButton,
+    addorSignInButton,
     cancelButton
 } from './layoutActionCreator';
 

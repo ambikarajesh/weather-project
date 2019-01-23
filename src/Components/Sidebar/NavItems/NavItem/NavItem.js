@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './NavItem.module.css';
 import Button from '../../../Button/Button';
+import {Link} from 'react-router-dom'
 const NavItem = (props) => {
     const display = (<div onClick = {props.clickCity}>
                         <p className = {classes.Time}> {props.city.time}</p>
@@ -8,7 +9,7 @@ const NavItem = (props) => {
                     </div>)
     return(
         <li className = {classes.NavItem} >
-                {display}
+                <Link to = '/'>{display}</Link>
                 <Button name = 'x' clicked = {props.clickDeleteButton} show = {props.show} disable = {false} custom/>
          </li>
     )

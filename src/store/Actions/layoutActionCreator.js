@@ -161,6 +161,23 @@ export const addButton = () => {
     }
 }
 
+export const openSignIn = () => {
+    return{
+        type:actionTypes.OPEN_SIGNIN
+    }
+}
+export const addorSignInButton = (isAuth) => {
+   return dispatch => {
+        if(isAuth){
+            dispatch(addButton())
+        }
+        else{
+            dispatch(openSignIn())
+        }
+        
+    }
+}
+
 export const cancelButton = () => {
     return{
         type:actionTypes.CANCEL_BUTTON

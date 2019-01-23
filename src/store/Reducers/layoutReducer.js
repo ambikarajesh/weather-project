@@ -110,11 +110,16 @@ const layoutReducer = (state = initialState,action) => {
                 showAddCity:false
             }
         case actionTypes.CLEAR_CITIES:
-        return{
-            ...state,
-            cityList :[]
-        } 
-            
+            return{
+                ...state,
+                cityList :[]
+            } 
+        case actionTypes.OPEN_SIGNIN:
+            return{
+                ...state,
+                showSidebar:false
+            }   
+
         default:
             return state
     }

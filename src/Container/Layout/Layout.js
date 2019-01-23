@@ -4,11 +4,6 @@ import Sidebar from '../../Components/Sidebar/Sidebar';
 import {connect} from 'react-redux';
 import * as actionCreators from '../../store/Actions/indexActionCreator';
 class Layout extends React.Component {
-    state = {
-        
-        showSidebar : false,
-        
-    }       
    
     componentDidMount(){
         this.props.fetchCurrentCityHandler(); 
@@ -24,11 +19,11 @@ class Layout extends React.Component {
         return(
             <React.Fragment>
                 <Toolbar clickToggleButton = {this.props.toggleButtonHandler} isAuthenticated = {this.props.isAuthenticated}/>
-                <Sidebar    error = {this.props.error}
-                            loading = {this.props.loading}
+                <Sidebar    loading = {this.props.loading}
                             showSidebar = {this.props.showSidebar} 
                             showAddCity = {this.props.showAddCity}
-                            clickAddButton = {this.props.addButtonHandler}
+                            isAuthenticated = {this.props.isAuthenticated}
+                            clickAddButton = {()=>this.props.addButtonHandler(this.props.isAuthenticated)}
                             clickCancelButton = {this.props.cancelButtonHandler}
                             clickAddCityButton = {this.props.addCityHandler}
                             clickDeleteButton = {this.props.deleteCityHandler}
@@ -64,7 +59,7 @@ const mapDispatchToProps = dispatch =>{
         toggleButtonHandler: () => dispatch(actionCreators.toggleButton()),
         addCityHandler : (newCity) => dispatch(actionCreators.addCity(newCity)),
         deleteCityHandler : (delCity) => dispatch(actionCreators.deleteCity(delCity)),        
-        addButtonHandler : () => dispatch(actionCreators.addButton()),
+        addButtonHandler : (isAuth) => dispatch(actionCreators.addorSignInButton(isAuth)),
         cancelButtonHandler: () => dispatch(actionCreators.cancelButton()),
         selectCityHandler: (selCity) => dispatch(actionCreators.selectCity(selCity))
     }
