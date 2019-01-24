@@ -31,9 +31,7 @@ class SearchLocation extends React.Component {
 
  
       render() {
-            //console.log(this.state)
-
-
+           
             const render = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                                 <div>
                                       <input

@@ -63,7 +63,6 @@ class SignIn extends React.Component{
             for(let key in this.state.controls){
                 signUpData[key] = this.state.controls[key].value;
           }
-          console.log(signUpData['email'], signUpData['password']);
           this.props.AuthenticationHandler(signUpData['email'], signUpData['password'], this.state.isSignUp)
         } 
     }

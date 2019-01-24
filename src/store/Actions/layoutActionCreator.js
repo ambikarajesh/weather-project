@@ -30,7 +30,6 @@ export const fetchCurrentCity = () => {
             });           
         }
         else{
-                console.log('Turn on location access in your device')
                 dispatch(fetchCurrentCityFail())
         }
     }
@@ -72,7 +71,6 @@ export const fetchCities = () => {
             }
             dispatch(fetchCitiesSuccess(cities))
         }).catch(error =>{
-            console.log(error);
             dispatch(fetchCitiesFail())
         })
     }
@@ -111,7 +109,6 @@ export const addCity = (newCity) => {
             dispatch(addCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{
-            console.log(error)
             dispatch(addCityFail())
         })
     }
@@ -142,7 +139,6 @@ export const deleteCity = (delCity) => {
            dispatch(deleteCitySuccess())
            dispatch(fetchCities())
         }).catch(error =>{
-            console.log(error)
             dispatch(deleteCityFail())
         })
     }

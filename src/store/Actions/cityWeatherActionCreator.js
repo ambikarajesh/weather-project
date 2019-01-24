@@ -59,11 +59,9 @@ export const fetchCityWeather = (city) => {
                         dispatch(fetchCityWeatherSuccess(Header, Footer, hourlylist))
                               
                         }).catch(error =>{
-                            console.log(error);
                             dispatch(fetchCityWeatherFail())
                         })
                 }).catch(error =>{
-                    console.log(error);
                     dispatch(fetchCityWeatherFail())
                 })
                

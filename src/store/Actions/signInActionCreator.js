@@ -60,7 +60,6 @@ export const signUporIn = (email, password, isSignUp) => {
             url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${APIKeys.FirebaseAPI}`;
         }
         axios.post(url, authData).then(res =>{
-            //console.log(res);
             localStorage.setItem("idToken", res.data.idToken);
             localStorage.setItem('userId', res.data.localId)
             const expireDate = new Date(new Date().getTime()+res.data.expiresIn *1000)
@@ -68,7 +67,6 @@ export const signUporIn = (email, password, isSignUp) => {
             dispatch(authSuccess(res.data.idToken, res.data.localId));
             dispatch(authTimeOut(res.data.expiresIn))
         }).catch(error =>{
-            console.log(error);
             dispatch(authFail(error.response.data.error))
         })
     }

@@ -3,10 +3,14 @@ import './App.css';
 import Layout from './Container/Layout/Layout';
 import CityWeather from './Container/CityWeather/CityWeather';
 import {Route, Switch, Redirect, withRouter} from 'react-router-dom';
-import SignUp from './Container/SignIn/SignIn';
 import Logout from './Container/Logout/Logout';
 import {connect} from 'react-redux';
 import * as actionCreators from './store/Actions/indexActionCreator';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
+
+const asyncSignUp = asyncComponent(()=>{
+  return import('./Container/SignIn/SignIn');
+})
 class App extends Component {
   componentDidMount(){
       this.props.RetainStateHandler();
@@ -18,7 +22,7 @@ class App extends Component {
       <Layout>
         <Switch>
             <Route path = '/'  exact component = {CityWeather}/>
-            <Route path = '/signin' component = {SignUp}/>
+            <Route path = '/signin' component = {asyncSignUp}/>
             <Route path = '/logout' component = {Logout}/>
             <Redirect to = '/'/>
         </Switch>

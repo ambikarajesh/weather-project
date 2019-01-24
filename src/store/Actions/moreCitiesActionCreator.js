@@ -37,7 +37,6 @@ export const fetchMoreCitiesWeather = (cityList) => {
                             };
                             dispatch(fetchMoreCitiesWeatherSuccess(data));                                                                    
                     }).catch(error =>{
-                        console.log(error);
                         dispatch(fetchMoreCitiesWeatherFail());
                     })
         })       
