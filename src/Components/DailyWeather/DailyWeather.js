@@ -27,10 +27,10 @@ const DailyWeather = (props) =>{
     const lists = data.map((item, c) =>{
          const src = "http://openweathermap.org/img/w/"+item.i+".png";
             return <li key ={item+c}>
-                <span>{item.d} </span>
-                <span><img src ={src}  alt = {item.i}/> </span>
-                <span>{item.min}&deg; </span>
-                <span>{item.max}&deg; </span>
+                <span style = {{marginRight:'10px'}}>{item.d} </span>
+                <span style = {{marginRight:'10px'}}><img src ={src}  alt = {item.i}/> </span>
+                <span style = {{marginRight:'10px'}}>{item.min}&deg; </span>
+                <span style = {{marginRight:'10px'}}>{item.max}&deg; </span>
             </li>
     })
     
