@@ -6,6 +6,7 @@ import * as actionCreators from '../../store/Actions/indexActionCreator';
 import {connect} from 'react-redux';
 import Spinner from '../../Components/UI/Spinner/Spinner';
 import {Redirect} from 'react-router-dom';
+import {updateObject} from '../../shared/utility';
 class SignIn extends React.Component{
     state ={
         controls:{
@@ -50,9 +51,14 @@ class SignIn extends React.Component{
         return this.state.controls['email'].valid && this.state.controls['password'].valid;        
     }
     InputChangeHandler = (event, id) => {
-        const updatedControls = {...this.state.controls};
-        updatedControls[id].value = event.target.value;
-        updatedControls[id].valid = this.checkvalidity(id, event.target.value) !== null;
+        
+        const updateControl = updateObject(this.state.controls[id], {
+            value : event.target.value,
+            valid : this.checkvalidity(id, event.target.value) !== null
+        })
+        const updatedControls = updateObject(this.state.controls,{
+            [id]:updateControl
+        });
         this.setState({controls:updatedControls});
         this.setState({formValid:this.formValidity()})
     }
