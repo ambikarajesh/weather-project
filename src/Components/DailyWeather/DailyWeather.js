@@ -25,7 +25,7 @@ const DailyWeather = (props) =>{
     })
     
     const lists = data.map((item, c) =>{
-         const src = "http://openweathermap.org/img/w/"+item.i+".png";
+         const src = "https://openweathermap.org/img/w/"+item.i+".png";
             return <li key ={item+c}>
                 <span style = {{marginRight:'10px'}}>{item.d} </span>
                 <span style = {{marginRight:'10px'}}><img src ={src}  alt = {item.i}/> </span>

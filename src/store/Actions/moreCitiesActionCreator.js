@@ -25,7 +25,7 @@ export const fetchMoreCitiesWeather = (cityList) => {
     return dispatch => {       
         dispatch(fetchMoreCitiesWeatherStart());        
         cityList.forEach(city =>{
-            axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(res =>
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(res =>
                     {   
                         const data = {
                                 latitude:city.latitude,

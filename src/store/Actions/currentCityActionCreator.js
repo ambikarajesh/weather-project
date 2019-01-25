@@ -24,7 +24,7 @@ export const fetchCurrentCityWeatherFail = () => {
 export const fetchCurrentCityWeather = (city) => {
     return dispatch => {
         dispatch(fetchCurrentCityWeatherStart());
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(res =>
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(res =>
                     {   
                         const curCity = {
                                 latitude:city.latitude,

@@ -3,7 +3,7 @@ import classes from './HourlyWeather.module.css';
 const HourlyWeather = (props) => {
         
         const lists = props.hourlyWeather.map((list,i) =>{
-            const src = "http://openweathermap.org/img/w/"+list.icon+".png";   
+            const src = "https://openweathermap.org/img/w/"+list.icon+".png";   
                          
             if(i<8){
                 return <li key ={i}> 

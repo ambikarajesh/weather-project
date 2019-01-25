@@ -26,9 +26,9 @@ export const fetchCityWeatherFail = () => {
 export const fetchCityWeather = (city) => {
     return dispatch => {
         dispatch(fetchCityWeatherStart());
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(resOne =>
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(resOne =>
                 {                       
-                    axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(resTwo =>   
+                    axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${city.latitude}&lon=${city.longitude}&appid=${APIKeys.OpenWeatherMap}`).then(resTwo =>   
                     {
                          
                     const Header = {
