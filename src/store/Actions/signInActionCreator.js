@@ -78,14 +78,14 @@ export const retainState = () => {
     return dispatch => {        
         const idToken = localStorage.getItem('idToken');
         if(idToken){
-           const expireDate = new Date(localStorage.getItem('expireDate'));
-            if(expireDate<new Date()){                
+            let expireDate  = (new Date(localStorage.getItem('expireDate')).getTime()-new Date().getTime())/1000;
+            if(expireDate<0){                
                 dispatch(logout());
             }
             else{
                 const userId = localStorage.getItem('userId');
                 dispatch(authSuccess(idToken, userId));
-                dispatch(authTimeOut(expireDate.getTime()/1000))
+                dispatch(authTimeOut(expireDate))
             }
         }
     }
